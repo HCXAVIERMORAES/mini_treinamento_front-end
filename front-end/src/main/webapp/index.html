@@ -14,9 +14,12 @@
 
 </head>
 	<body>
-			<!-- comentario -MIni curso front-end -cadastro- -->
-		<!--Para ver o formulario pode-se usar: <form action="" style="background-color: green;">-->	
-		<form action="">
+			<!-- comentario -Mini curso front-end - cadastro - -->
+		<!--Para ver o formulario pode-se usar: <form action="" style="background-color: green;">-->
+		<!-- o  onsubmit valida os dados antes de enviar para o servido. method="post" esconde o que envia -->	
+		
+		<form action="" method="post" onsubmit="return validarDados() ? true : false">
+		
 		<!-- <table border="1"> para vizualizar a borda da tabela vendo como ele esta estruturada -->
 			<table style="background: #CFCFCF;">
 			
@@ -39,11 +42,44 @@
 					<!-- botao para salvar -->
 					<td/>
 						<!--utilizando CSS, introdutorio, com o atributo style="" dentro da tag -->
-						<td><input type="submit" value="Salvar" style="width: 100%; border-radius: 5px"></td> 
+						<!-- para usar a função ou metodo, chama-o pelo onClick= 'nome-metodo -->
+						<td>
+							<!-- onde ficario o onclick="validarDados" é retirado e colocado no formulario como onsubmit -->
+							<input type="submit" value="Salvar" style="width: 100%; border-radius: 5px">
+						</td> 
 				</tr>	
 								
 			</table>
 		</form> <!-- formmulario para o cadastro action p/ salvar no bd -->
+		
+		<!-- usando o javascript para manipular dados no documento html. vem dentro de uma tag <script> -->
+		<script type="text/javascript">
+			/*para realizar algo usa-se um método, ou em javascript, função.*/
+			function validarDados() {
+				//no documento html, pegar o valor do elemento pelo Id, que deve ser único
+				var nome = document.getElementById("nome").value;
+				var login = document.getElementById("login").value;	
+				var senha = document.getElementById("senha").value;				
+				
+				//validar campos
+				if(nome== ''){
+					alert("informe o nome!");
+					return false;
+				} else if(login == ''){
+					alert("informe o Login!");
+					return false;
+				} else if(senha == ''){
+					alert("informe a senha!");
+					return false;
+				}
+				
+				return true;
+				
+				//mostrar na tela o conteudo da variavel nome
+				//alert(nome); 
+			}
+		
+		</script>
 	
 	</body>
 </html>
